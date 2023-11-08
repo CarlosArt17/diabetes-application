@@ -27,11 +27,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       initialRoute: '/',
       routes: {
-        '/': (context) => Login(),
-        '/home': (context) => Predict(),
+        '/a': (context) => Login(),
+        '/': (context) => Predict(),
         '/signIn': (context) => Signin(),
-         '/retrain': (context) => RetrainScreen(),
-        
+        '/retrain': (context) => RetrainScreen(),
       },
     );
   }

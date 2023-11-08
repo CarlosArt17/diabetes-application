@@ -25,7 +25,7 @@ class Login extends StatelessWidget {
   Widget build(BuildContext context) {
     var authService = Provider.of<AuthService>(context);
     return Scaffold(
-      backgroundColor: Colors.grey[300],
+      backgroundColor: Color.fromARGB(255, 235, 181, 81),
       body: SafeArea(
         child: Center(
           child: Column(
@@ -37,7 +37,7 @@ class Login extends StatelessWidget {
               Text(
                 'Iniciar Sesion',
                 style: TextStyle(
-                  color: const Color.fromARGB(255, 14, 22, 28),
+                  color: Color.fromARGB(255, 121, 58, 0),
                   fontWeight: FontWeight.bold,
                   fontSize: 50,
                 ),
@@ -49,7 +49,7 @@ class Login extends StatelessWidget {
               Text(
                 '¡Bienvenido!',
                 style: TextStyle(
-                  color: Colors.grey[700],
+                  color: const Color.fromARGB(255, 0, 0, 0),
                   fontSize: 16,
                 ),
               ),
@@ -59,7 +59,7 @@ class Login extends StatelessWidget {
               // username textfield
               MyTextField(
                 controller: usernameController,
-                hintText: 'Username',
+                hintText: 'Nombre de Usuario',
                 obscureText: false,
               ),
 
@@ -68,7 +68,7 @@ class Login extends StatelessWidget {
               // password textfield
               MyTextField(
                 controller: passwordController,
-                hintText: 'Password',
+                hintText: 'Contraseña',
                 obscureText: true,
               ),
 
@@ -82,7 +82,7 @@ class Login extends StatelessWidget {
                   children: [
                     Text(
                       'Olvidaste tu Contraseña?',
-                      style: TextStyle(color: Colors.grey[600]),
+                      style: TextStyle(color: Color.fromARGB(255, 121, 58, 0)),
                     ),
                   ],
                 ),
@@ -93,8 +93,6 @@ class Login extends StatelessWidget {
               // sign in butto
               ElevatedButton(
                 onPressed: () async {
-
-                  
                   final username = usernameController.text;
                   final password = passwordController.text;
 
@@ -103,60 +101,21 @@ class Login extends StatelessWidget {
                   print(loginOk);
 
                   if (loginOk) {
-                    
                     Navigator.pushNamed(context, '/home');
                   } else {
-                   
                     print('El inicio de sesión ha fallado');
                   }
                 },
                 style: ElevatedButton.styleFrom(
-                  primary: Colors.blue, // Color de fondo del botón
+                  primary: Color.fromARGB(255, 121, 58, 0), // Color de fondo del botón
                   onPrimary: Colors.white, // Color del texto del botón
                 ),
-                child: Text('Go Home'), // Puedes personalizar el texto aquí
+                child: Text('Iniciar Sesion'), // Puedes personalizar el texto aquí
               ),
 
               const SizedBox(height: 30),
 
               // or continue with
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: Divider(
-                        thickness: 0.5,
-                        color: Colors.grey[400],
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                      child: Text(
-                        'Or continue with',
-                        style: TextStyle(color: Colors.grey[700]),
-                      ),
-                    ),
-                    Expanded(
-                      child: Divider(
-                        thickness: 0.5,
-                        color: Colors.grey[400],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-
-              const SizedBox(height: 20),
-
-              // google + apple sign in buttons
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
-                  // google button
-                  SquareTile(imagePath: 'lib/images/google.png'),
-                ],
-              ),
 
               const SizedBox(height: 15),
               InkWell(
@@ -168,8 +127,8 @@ class Login extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      'Not a member?',
-                      style: TextStyle(color: Colors.grey[700]),
+                      'No eres miebro?',
+                      style: TextStyle(color: const Color.fromARGB(255, 0, 0, 0)),
                     ),
                     const SizedBox(width: 4),
                     InkWell(
@@ -177,9 +136,9 @@ class Login extends StatelessWidget {
                         signIn(context);
                       },
                       child: Text(
-                        'Register now',
+                        'Registro',
                         style: TextStyle(
-                          color: Colors.blue,
+                          color: Color.fromARGB(255, 121, 58, 0),
                           fontWeight: FontWeight.bold,
                         ),
                       ),

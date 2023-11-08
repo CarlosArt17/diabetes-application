@@ -26,7 +26,7 @@ class Signin extends StatelessWidget {
   Widget build(BuildContext context) {
     var authService = Provider.of<AuthService>(context);
     return Scaffold(
-      backgroundColor: Colors.grey[300],
+      backgroundColor: Color.fromARGB(255, 235, 181, 81),
       body: SafeArea(
         child: Center(
           child: Column(
@@ -36,9 +36,9 @@ class Signin extends StatelessWidget {
 
               // logo
               Text(
-                'SignIn',
+                'Registro',
                 style: TextStyle(
-                  color: const Color.fromARGB(255, 14, 22, 28),
+                  color: Color.fromARGB(255, 121, 58, 0),
                   fontWeight: FontWeight.bold,
                   fontSize: 50,
                 ),
@@ -50,7 +50,7 @@ class Signin extends StatelessWidget {
               Text(
                 '¡Bienvenido!',
                 style: TextStyle(
-                  color: Colors.grey[700],
+                  color: const Color.fromARGB(255, 0, 0, 0),
                   fontSize: 16,
                 ),
               ),
@@ -60,13 +60,13 @@ class Signin extends StatelessWidget {
               // username textfield
               MyTextField(
                 controller: emailController,
-                hintText: 'Email',
+                hintText: 'Correo electronico',
                 obscureText: false,
               ),
 
               MyTextField(
                 controller: usernameController,
-                hintText: 'Username',
+                hintText: 'Nombre de usuario',
                 obscureText: false,
               ),
 
@@ -75,7 +75,7 @@ class Signin extends StatelessWidget {
               // password textfield
               MyTextField(
                 controller: passwordController,
-                hintText: 'Password',
+                hintText: 'Contraseña',
                 obscureText: true,
               ),
 
@@ -88,8 +88,8 @@ class Signin extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Text(
-                      'Forgot Password?',
-                      style: TextStyle(color: Colors.grey[600]),
+                      'Olvidaste tu contrseña?',
+                      style: TextStyle(color: const Color.fromARGB(255, 0, 0, 0)),
                     ),
                   ],
                 ),
@@ -104,65 +104,28 @@ class Signin extends StatelessWidget {
                   final username = usernameController.text;
                   final password = passwordController.text;
 
-                  final loginOk = await authService.register(email ,username, password);
+                  final loginOk =
+                      await authService.register(email, username, password);
 
                   print(loginOk);
 
                   if (loginOk) {
-                    
                     Navigator.pushNamed(context, '/home');
                   } else {
-                   
                     print('El inicio de sesión ha fallado');
                   }
                 },
                 style: ElevatedButton.styleFrom(
-                  primary: Colors.blue, // Color de fondo del botón
-                  onPrimary: Colors.white, // Color del texto del botón
+                  primary: Color.fromARGB(255, 121, 58, 0), // Color de fondo del botón
+                  onPrimary: Color.fromARGB(255, 255, 255, 255), // Color del texto del botón
                 ),
-                child: Text('Register'), // Puedes personalizar el texto aquí
+                child: Text('Registrarse'), // Puedes personalizar el texto aquí
               ),
 
               const SizedBox(height: 30),
 
               // or continue with
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: Divider(
-                        thickness: 0.5,
-                        color: Colors.grey[400],
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                      child: Text(
-                        'Or continue with',
-                        style: TextStyle(color: Colors.grey[700]),
-                      ),
-                    ),
-                    Expanded(
-                      child: Divider(
-                        thickness: 0.5,
-                        color: Colors.grey[400],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-
-              const SizedBox(height: 30),
-
-              // google + apple sign in buttons
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
-                  // google button
-                  SquareTile(imagePath: 'lib/images/google.png'),
-                ],
-              ),
+              
 
               const SizedBox(height: 25),
 
@@ -175,14 +138,14 @@ class Signin extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      'Not a member?',
-                      style: TextStyle(color: Colors.grey[700]),
+                      'Ya eres mienbro?',
+                      style: TextStyle(color: const Color.fromARGB(255, 0, 0, 0)),
                     ),
                     const SizedBox(width: 4),
                     const Text(
-                      'LogIn',
+                      'Inicio de Sesion',
                       style: TextStyle(
-                        color: Colors.blue,
+                        color: Color.fromARGB(255, 121, 58, 0),
                         fontWeight: FontWeight.bold,
                       ),
                     ),

@@ -3,23 +3,29 @@ import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 
 class PredictionService with ChangeNotifier {
-  final String baseUrl = 'https://sizefastapi-service-ivanavila1224.cloud.okteto.net';
+  final String baseUrl = 'https://ml-service-carlosart17.cloud.okteto.net';
 
-  Future<String> predictClothingSize(
-      {required double weight,
+  Future<Map<String, dynamic>> predictClothingSize(
+      {required int gender,
       required double age,
-      required double height}) async {
-    final Uri url = Uri.parse('$baseUrl/predict');
-
-    print(url);
-
+      required int hypertension,
+      required int heartdisease,
+      required int smokinghistory,
+      required double bmi,
+      required double hbA1clevel,
+      required double bloodglucoselevel}) async {
+    final Uri url = Uri.parse('$baseUrl/score');
 
     final Map<String, dynamic> requestBody = {
-      'weight': weight,
+      'gender': gender,
       'age': age,
-      'height': height,
+      'hypertension': hypertension,
+      'heart_disease': heartdisease,
+      'smoking_history': smokinghistory,
+      'bmi': bmi,
+      'HbA1c_level': hbA1clevel,
+      'blood_glucose_level': bloodglucoselevel
     };
-    print(jsonEncode(requestBody));
 
     final response = await http.post(
       url,
@@ -28,13 +34,12 @@ class PredictionService with ChangeNotifier {
       },
       body: jsonEncode(requestBody),
     );
-    print(response.body);
 
     if (response.statusCode == 200) {
-      final responseData = json.decode(response.body);
-      return responseData['size'];
+      final responseData = jsonDecode(response.body);
+      return responseData;
     } else {
-      throw Exception('Error al consumir la API de predicción');
+      throw Exception('Error al consumir la API de predicción ${response.statusCode}');
     }
   }
 }
